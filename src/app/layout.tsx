@@ -45,7 +45,7 @@ export const metadata = {
         height: 630,
         alt: 'Inai Tamil Matrimony',
       },
-    ],
+    ],  
   },
   twitter: {
     card: 'summary_large_image',
