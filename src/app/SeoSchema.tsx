@@ -8,12 +8,12 @@ export default function SeoSchema() {
           "@graph": [
             {
               "@type": "Organization",
-              "@id": "https://inai.lk/#organization",
+              "@id": "https://matrimonytamil.com/#organization",
               "name": "Inai",
-              "url": "https://inai.lk",
+              "url": "https://matrimonytamil.com",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://inai.lk/icon.png"
+                "url": "https://matrimonytamil.com/icon.png"
               },
               "sameAs": [
                 "https://www.facebook.com/inai.lk",
@@ -28,31 +28,31 @@ export default function SeoSchema() {
             },
             {
               "@type": "WebSite",
-              "@id": "https://inai.lk/#website",
-              "url": "https://inai.lk",
+              "@id": "https://matrimonytamil.com/#website",
+              "url": "https://matrimonytamil.com",
               "name": "Inai — Tamil Matrimony Sri Lanka",
               "description": "Inai Tamil Matrimony connects Sri Lankan Tamils and the global diaspora to find life partners. Rooted in Tamil values.",
               "publisher": {
-                "@id": "https://inai.lk/#organization"
+                "@id": "https://matrimonytamil.com/#organization"
               },
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://inai.lk/matches?q={search_term_string}",
+                "target": "https://matrimonytamil.com/matches?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             },
             {
               "@type": "WebPage",
-              "@id": "https://inai.lk/#webpage",
-              "url": "https://inai.lk",
+              "@id": "https://matrimonytamil.com/#webpage",
+              "url": "https://matrimonytamil.com",
               "name": "Inai — Tamil Matrimony Sri Lanka",
-              "isPartOf": { "@id": "https://inai.lk/#website" },
-              "about": { "@id": "https://inai.lk/#organization" },
+              "isPartOf": { "@id": "https://matrimonytamil.com/#website" },
+              "about": { "@id": "https://matrimonytamil.com/#organization" },
               "description": "Find your Tamil life partner on Inai. Sri Lanka's trusted Tamil matrimony platform for the local community and global diaspora including UK, Canada, Australia, Germany, Singapore, Malaysia, and India."
             },
             {
               "@type": "FAQPage",
-              "@id": "https://inai.lk/#faq",
+              "@id": "https://matrimonytamil.com/#faq",
               "mainEntity": [
                 {
                   "@type": "Question",

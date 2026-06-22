@@ -4,7 +4,7 @@ import PrivacyPolicy from "@/src/components/more/PrivacySection";
 export const metadata = {
   title: "Privacy Policy — Inai Tamil Matrimony",
   description: "Read the Privacy Policy for Inai, the Tamil matrimony platform by Ahken Nexus. Learn how we collect, use, and protect your personal data.",
-  alternates: { canonical: "https://inai.lk/privacy" },
+  alternates: { canonical: "https://matrimonytamil.com/privacy" },
 };
 
 export default function PrivacyPage() {

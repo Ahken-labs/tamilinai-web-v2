@@ -10,7 +10,7 @@ import SectionScroller from "../SectionScroller";
 export const metadata = {
   title: "Contact Inai — Tamil Matrimony Sri Lanka",
   description: "Get in touch with the Inai team. We help Tamil families in Sri Lanka and worldwide find the right life partner.",
-  alternates: { canonical: "https://inai.lk/contact" },
+  alternates: { canonical: "https://matrimonytamil.com/contact" },
 };
 
 export default function ContactPage() {

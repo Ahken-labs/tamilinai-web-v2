@@ -4,7 +4,7 @@ import RefundPolicy from "@/src/components/more/RefundPolicySection";
 export const metadata = {
   title: "Refund & Return Policy — Inai Tamil Matrimony",
   description: "Read the Refund and Cancellation Policy for Inai Elite Membership. Understand your refund eligibility, cancellation windows, and how to request a refund.",
-  alternates: { canonical: "https://inai.lk/refund-policy" },
+  alternates: { canonical: "https://matrimonytamil.com/refund-policy" },
 };
 
 export default function RefundPolicyPage() {
