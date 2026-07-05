@@ -8,6 +8,7 @@ const arima = Arima({ subsets: ["tamil", "latin"], weight: ["700"], variable: "-
 import QueryProvider from "../providers/QueryProvider";
 import SeoSchema from "./SeoSchema";
 import NoContextMenu from "../components/NoContextMenu";
+import SessionRestorer from "../components/SessionRestorer";
 import { ToastProvider } from "../components/ui/Toast";
 
 export const viewport = {
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <NoContextMenu />
+        <SessionRestorer />
         <SeoSchema/>
         <QueryProvider>
           <LangProvider>
