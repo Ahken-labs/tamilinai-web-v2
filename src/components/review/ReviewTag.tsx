@@ -13,7 +13,7 @@ const REVIEW_DATA = {
   },
   inai: {
     rating: 4.5,
-    href: "https://inai.lk",
+    href: "https://matrimonytamil.com",
   },
 };
 import Link from "next/link";

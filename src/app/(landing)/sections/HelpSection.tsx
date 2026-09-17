@@ -10,7 +10,7 @@ export function HelpSection() {
   const { t } = useLang();
   return (
     <section
-      className="relative w-full overflow-hidden font-poppins"
+      className="relative w-full overflow-hidden mt-10 lg:mt-18 font-poppins"
       style={{
         background: "linear-gradient(180deg, #FFF7F0 0%, #FFEBEB 100%)",
       }}
@@ -38,17 +38,17 @@ export function HelpSection() {
             width={250}
             height={400}
             sizes="(max-width: 768px) 180px, (max-width: 1024px) 220px, 250px"
-            className="relative z-10  w-[180px] h-[288px] md:w-[220px] md:h-[352px] lg:w-[250px] lg:h-[400px] object-contain object-bottom"
+            className="relative z-10  w-[180px] h-[288px] md:w-[220px] md:h-[352px] lg:w-[250px] lg:h-[400px] object-contain "
           />
         </div>
 
         <div className="flex flex-col text-center lg:text-left max-w-[620px]">
           <h2
-            className="font-bold text-dark text-[24px] sm:text-[26px] md:text-[28px] lg:text-[32px]">
+            className="font-bold text-dark font-32">
             {t("Need_Help_Finding_a_Match")}
           </h2>
-          <p className="mt-2 text-dark text-[16px] md:max-w-[582px] mx-auto lg-max-w-none" >
-            {t("Help_parah")}
+          <p className="mt-2 text-dark text-[15px] lg:text-[16px] max-w-[330px] md:max-w-[510px] mx-auto lg-max-w-none" >
+            {t("Chat_with_Tamilinais_friendly_support_team_for_profile_creation_photo_uploads_or_personalized_matchmaking_assistance")}
           </p>
 
           {/* CTA WhatsApp */}

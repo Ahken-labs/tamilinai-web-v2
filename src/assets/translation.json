@@ -4,11 +4,11 @@
         "Log_In": "Log In",
         "Built_exclusively_for": "Built exclusively for",
         "Sri_Lankan_Tamils": "Sri Lankan Tamils",
-        "Inai_lk_Sri_Lankan_Tamil_matrimony": "Inai.lk - For your A-Z wedding needs.",
-        "hero_section_parah": "The ultimate digital directory built for Sri Lankan Tamils worldwide. From finding top-tier venues and photographers to discovering meaningful connections - plan your perfect union here.",
+        "Inai_lk_Sri_Lankan_Tamil_matrimony": "Inai.lk - Sri Lankan Tamil matrimony",
+        "wherever_you_are": "wherever you are",
+        "hero_section_parah": "The only matrimony platform built for Sri Lankan Tamil families worldwide. From Sri Lanka to London, Toronto, Paris and Sydney — find a partner who shares your roots, your values, and your future.",
         "Find_your_matches": "Find your matches",
-        "Start_my_journey": "Start my journey",
-        "Create_your_free_profile": "Create your ad profile",
+        "Create_your_free_profile": "Create your free profile",
         "Create_my_free_profile": "Create my free profile",
         "This_profile_is_for": "This profile is for",
         "Name": "Name",
@@ -284,18 +284,24 @@
         "Business":"Business",
         "About_my_partner":"About my partner (optional)",
         "Are_you_a_wedding_vendor":"Are you a wedding vendor?",
-        "Go_to_Inai_Business_Login":"Go to Inai Business Login"
+        "Go_to_Inai_Business_Login":"Go to Inai Business Login",
+         "More_than_just_matchmaking": "More than just matchmaking.",
+        "We_are_your_bridge_to_home": "Your bridge back to your roots.",
+        "Chat_with_Tamilinais_friendly_support_team_for_profile_creation_photo_uploads_or_personalized_matchmaking_assistance": "Inai.lk team will help you build your profile and find your first matches — in Tamil or English. We understand your journey.",
+        "Keep_your_Inai_account_secure": "Enter your details to access your account"
+
+
     },
     "ta": {
         "Already_a_member": "ஏற்கனவே உறுப்பினரா?",
         "Log_In": "உள்நுழை",
         "Built_exclusively_for": "இலங்கை தமிழர்காக",
         "Sri_Lankan_Tamils": "பிரத்தியேகமாக உருவாக்கப்பட்டது",
-        "Inai_lk_Sri_Lankan_Tamil_matrimony": "இணை.lk - உங்கள் திருமணத்திற்கான அனைத்துத் தேவைகளுக்கும்.",
-        "hero_section_parah": "உலகெங்கிலும் உள்ள இலங்கைத் தமிழர்களுக்காக உருவாக்கப்பட்ட மிகச்சிறந்த டிஜிட்டல் வழிகாட்டி. தலைசிறந்த நிகழ்விடங்களையும் புகைப்படக் கலைஞர்களையும் கண்டறிவது முதல் அர்த்தமுள்ள உறவுகளை உருவாக்குவது வரை - உங்கள் கச்சிதமான திருமணத்தை இங்கே திட்டமிடுங்கள்.",
+        "Inai_lk_Sri_Lankan_Tamil_matrimony": "இணை.lk - இலங்கை தமிழ் திருமண தளம்",
+        "wherever_you_are": "நீங்கள் எங்கிருந்தாலும்",
+        "hero_section_parah": "உலகெங்கிலும் உள்ள இலங்கைத் தமிழ் குடும்பங்களுக்காக உருவாக்கப்பட்ட ஒரே திருமணத் தளம். இலங்கையிலிருந்து லண்டன், டொராண்டோ, பாரிஸ் மற்றும் சிட்னி வரை — உங்கள் வேர்கள், உங்கள் விழுமியங்கள் மற்றும் உங்கள் எதிர்காலத்தைப் பகிர்ந்து கொள்ளும் ஒரு துணையைக் கண்டறியுங்கள்.",
         "Find_your_matches": "உங்கள் பொருத்தங்களைக் கண்டறியவும்",
-        "Start_my_journey": "பயணத்தைத் தொடங்க",
-        "Create_your_free_profile": "உங்கள் விளம்பர விவரக்குறிப்பை உருவாக்கவும்",
+        "Create_your_free_profile": "இலவசமாக உங்கள் சுயவிவரத்தை உருவாக்குங்கள்",
         "Create_my_free_profile": "சுயவிவரத்தை உருவாக்கு",
         "This_profile_is_for": "சுயவிவரம் யாருக்காக",
         "Name": "பெயர்",
@@ -571,7 +577,12 @@
         "Business":"வணிகம்",
         "About_my_partner":"எனது இணையரைப் பற்றி (விருப்பத்திற்குரியது)",
         "Are_you_a_wedding_vendor":"நீங்கள் ஒரு திருமணச் சேவை வழங்குநரா?",
-        "Go_to_Inai_Business_Login":"இணை வணிக உள்நுழைவு பகுதிக்குச் செல்லவும்"
+        "Go_to_Inai_Business_Login":"இணை வணிக உள்நுழைவு பகுதிக்குச் செல்லவும்",
+        "More_than_just_matchmaking": "வெறும் வரன் தேடுவது மட்டுமல்ல.",
+        "We_are_your_bridge_to_home": "இது உங்கள் வேர்களுக்கான பாலம்.",
+        "Chat_with_Tamilinais_friendly_support_team_for_profile_creation_photo_uploads_or_personalized_matchmaking_assistance": "Inai.lk குழு, உங்கள் சுயவிவரத்தை உருவாக்கவும், தமிழிலோ அல்லது ஆங்கிலத்திலோ உங்கள் முதல் பொருத்தங்களைக் கண்டறியவும் உதவும். உங்கள் பயணத்தை நாங்கள் புரிந்துகொள்கிறோம்.",
+        "Keep_your_Inai_account_secure": "உங்கள் இணை கணக்கை பாதுகாப்பாக வைத்திருங்கள். இதை உள்நுழைவதற்கு பயன்படுத்துவீர்கள்."
+
 
     }
 }

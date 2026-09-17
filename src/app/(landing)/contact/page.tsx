@@ -8,15 +8,15 @@ import FAQSection from "../sections/FAQSection";
 import SectionScroller from "../SectionScroller";
 
 export const metadata = {
-  title: "FAQ — Inai Tamil Matrimony",
-  description: "Frequently asked questions about Inai Tamil Matrimony. How to create a profile, search for matches, send interests, and membership options.",
-  alternates: { canonical: "https://matrimonytamil.com/faq" },
+  title: "Contact Inai — Tamil Matrimony Sri Lanka",
+  description: "Get in touch with the Inai team. We help Tamil families in Sri Lanka and worldwide find the right life partner.",
+  alternates: { canonical: "https://matrimonytamil.com/contact" },
 };
 
-export default function FAQPage() {
+export default function ContactPage() {
   return (
     <main>
-      <SectionScroller sectionId="faq" />
+      <SectionScroller sectionId="contact" />
       <section id="hero">
         <HeroSection />
       </section>

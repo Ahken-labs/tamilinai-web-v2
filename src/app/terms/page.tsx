@@ -4,7 +4,7 @@ import Terms from "@/src/components/more/TermsSection";
 export const metadata = {
   title: "Terms & Conditions — Inai Tamil Matrimony",
   description: "Read the Terms and Conditions for using Inai, the Tamil matrimony platform by Ahken Nexus.",
-  alternates: { canonical: "https://inai.lk/terms" },
+  alternates: { canonical: "https://matrimonytamil.com/terms" },
 };
 
 export default function TermsPage() {

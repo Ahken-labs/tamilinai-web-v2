@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useLang } from "../context/LangContext";
 import { ChevronIcon, Logo, TamilLanguageIcon } from "../assets/Icons";
 import Link from "next/link";
@@ -13,8 +13,6 @@ const LANGUAGES = [
 
 export default function Header() {
   const { lang, setLang, t } = useLang();
-  const pathname = usePathname();
-  const isLoginPage = pathname === "/login";
 
   const [desktopOpen, setDesktopOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -41,30 +39,28 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full bg-white/60 backdrop-blur-sm">
       <div className="mx-auto flex h-[68px] lg:h-[76px] max-w-[1920px] items-center justify-between px-4 lg:px-10 xl:px-[120px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-[7.2px] min-[500px]:gap-[8px]">
-          <Logo className="max-[500px]:w-8 w-9 lg:w-10 max-[500px]:h-8 h-9 lg:h-10" />
-          <span className="min-[390px]:flex hidden font-tamil text-[15.429px] sm:text-[16px] font-semibold leading-[150%] min-[500px]:tracking-[0.7px] text-dark">
+        <Link href="/" className="flex items-center gap-2">
+          <Logo className="w-9 lg:w-10 h-9 lg:h-10" />
+          <span className="font-tamil text-[16px] md:text-[18px] lg:text-[20px] font-semibold leading-[1.5] tracking-[0.7px] text-dark">
             இணை.lk
           </span>
         </Link>
 
         {/* Desktop right */}
         <div className="hidden items-center lg:flex">
-          {!isLoginPage && <span className="font-poppins text-[16px] font-medium text-dark pr-2">
+          <span className="font-poppins text-[16px] font-medium text-dark">
             {t("Already_a_member")}
-          </span>}
-          {!isLoginPage && <div className="mr-5"><LoginButton className="flex" /> </div>}
-          <div className="mr-5 flex"><BusinessLoginButton className="flex" /></div>
-
+          </span>
+          <LoginButton className="ml-4 hidden lg:flex" />
 
           {/* Language selector */}
-          <div ref={desktopRef} className="relative">
+          <div ref={desktopRef} className="relative ml-11">
             <button
               type="button"
               onClick={() => setDesktopOpen(!desktopOpen)}
               className="flex items-center gap-2 cursor-pointer select-none"
             >
-              <span className=" font-tamil text-[16px] font-medium text-dark">
+              <span className="font-tamil text-[16px] font-medium text-dark">
                 {lang === "en" ? "ஆங்கிலம்" : "Tamil"}
               </span>
               <ChevronIcon open={desktopOpen} />
@@ -80,9 +76,8 @@ export default function Header() {
         </div>
 
         {/* Mobile right: login + language icon */}
-        <div className="flex items-center gap-2 lg:hidden">
-          {!isLoginPage && <LoginButton className="flex lg:hidden" />}
-          <BusinessLoginButton className={`flex lg:hidden ${isLoginPage ? "mr-1" : ""}`} />
+        <div className="flex items-center gap-3 md:gap-4 lg:hidden">
+          <LoginButton className="flex lg:hidden" />
 
           <div ref={mobileRef} className="relative">
             <button
@@ -119,7 +114,7 @@ function LanguageDropdown({ open, lang, setLang, close, }: {
         <button key={l.value} type="button" onClick={() => {
           setLang(l.value); close();
         }}
-          className={`cursor-pointer transition-transform duration-300 ease-out hover:scale-[1.03] my-0.5 w-full rounded-[8px] px-5 py-2 text-left font-tamil text-[15px] font-medium transition-colors ${lang === l.value
+          className={`my-0.5 w-full rounded-[8px] px-5 py-2 text-left font-tamil text-[15px] font-medium transition-colors ${lang === l.value
             ? "bg-[#fdf0f2] text-[#B31B38]"
             : "text-dark hover:bg-[#EAEAEA] hover:text-dark"
             }`} >
@@ -127,22 +122,6 @@ function LanguageDropdown({ open, lang, setLang, close, }: {
         </button>
       ))}
     </div>
-  );
-}
-
-function BusinessLoginButton({ className = "" }: { className?: string }) {
-  const { t } = useLang();
-  return (
-    <Link
-      href="https://business.inai.lk/login"
-      className="max-[500px]:py-[5.5px] py-0 transition-transform duration-300 ease-out hover:scale-[1.05]"
-    >
-      <div className={`sm:h-[32px] cursor-pointer select-none items-center justify-center border border-[#B31B38]
-        font-poppins text-[14px] md:text-[16px] font-medium text-[#B31B38] transition-colors duration-150 hover:bg-[#B31B38] hover:text-white
-        ${className} py-[5px] sm:py-2 px-2 sm:px-4 rounded-[8px]`}>
-        {t("Business")}
-      </div>
-    </Link>
   );
 }
 
@@ -161,13 +140,11 @@ function LoginButton({ className = "" }: { className?: string }) {
     <button
       type="button"
       onClick={handleLogin}
-      className="transition-transform duration-300 ease-out hover:scale-[1.06] max-[500px]:py-[5.5px] py-0"
+      className={`cursor-pointer select-none items-center justify-center rounded border border-[#B31B38]
+        font-poppins text-[14px] md:text-[16px] font-medium text-[#B31B38] transition-colors duration-150 hover:bg-[#B31B38] hover:text-white
+        ${className} py-1 px-4 rounded-[8px] border-[1.4px]`}
     >
-      <div className={`sm:h-[32px] cursor-pointer select-none items-center justify-center bg-[#B31B38] hover:bg-[#8E162D] active:bg-[#6F1023]
-        font-poppins text-[14px] sm:text-[15px] md:text-[16px] font-medium text-[#FFFFFF] transition-colors duration-150 
-        ${className} py-1.5 sm:py-[9px] px-2 sm:px-4 rounded-[8px]`}>
-        {t("Log_In")}
-      </div>
+      {t("Log_In")}
     </button>
   );
 }

@@ -18,7 +18,7 @@ export const viewport = {
 };
 
 export const metadata = {
-  metadataBase: new URL('https://inai.lk'),
+  metadataBase: new URL('https://matrimonytamil.com'),
   title: {
     default: 'Inai - Tamil wedding directory',
     template: '%s | Inai',
@@ -31,13 +31,13 @@ export const metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://inai.lk',
+    canonical: 'https://matrimonytamil.com',
   },
   openGraph: {
     title: 'Inai - Tamil wedding directory',
     description:
       'Inai Tamil Matrimony is an online matchmaking platform based in Sri Lanka, helping Tamil brides and grooms find life partners locally and across the global diaspora. We connect Sri Lankan Tamils with matches in Canada, the UK, Australia, Germany, Singapore, Malaysia, and India. Members search verified profiles by religion, caste, education, profession, and city, serving Hindu, Catholic, Christian, and Muslim Tamil communities. The platform offers secure messaging, video verification, and membership options for matrimonial search. Parents, siblings, and individuals can create and manage profiles for family members. Inai is a culturally rooted matrimonial service for Tamil families in Sri Lanka and worldwide.',
-    url: 'https://inai.lk',
+    url: 'https://matrimonytamil.com',
     siteName: 'Inai - Tamil wedding directory',
     type: 'website',
     images: [

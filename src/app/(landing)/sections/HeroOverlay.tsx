@@ -39,13 +39,16 @@ export default function HeroOverlay() {
                                     <h1 className="font-semibold text-light font-32">
                                         {t("Inai_lk_Sri_Lankan_Tamil_matrimony")}
                                     </h1>
+                                    <h1 className="mb-2 font-medium italic text-light font-32">
+                                        {t("wherever_you_are")}
+                                    </h1>
                                     <p className="lg:text-[16px] text-[14px] leading-[1.5] text-white">
                                         {t("hero_section_parah")}
                                     </p>
                                     <div className="lg:hidden">
                                         <Button
                                             className="mt-2 w-full !md:text-[16px] !text-[15px]"
-                                            text={t("Start_my_journey")}
+                                            text={t("Find_your_matches")}
                                             onPress={() => setOpenForm(true)}
                                         />
                                     </div>

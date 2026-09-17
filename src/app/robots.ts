@@ -23,6 +23,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: 'https://inai.lk/sitemap.xml',
+    sitemap: 'https://matrimonytamil.com/sitemap.xml',
   };
 }
