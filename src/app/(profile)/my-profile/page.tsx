@@ -37,7 +37,7 @@ import ReligionCasteSection from "@/src/components/profile/sections/ReligionCast
 import LocationSection from "@/src/components/profile/sections/LocationSection";
 import LifestyleSection from "@/src/components/profile/sections/LifestyleSection";
 import InterestsHobbiesSection from "@/src/components/profile/sections/InterestsHobbiesSection";
-import PartnerPreferenceSection from "@/src/components/profile/sections/PartnerPreferenceSection";
+import PartnerPreferenceSection, { convertDisplayToApi } from "@/src/components/profile/sections/PartnerPreferenceSection";
 
 const TABS = [
   { label: "Edit profile", value: "edit_profile" },
@@ -61,6 +61,17 @@ function readDraft<T>(key: string): T | null {
 
 function clearAllDrafts() {
   Object.values(DRAFT_KEYS).forEach(k => sessionStorage.removeItem(k));
+}
+
+// Re-cache saved partner prefs so the section (and the preference modal) show the new
+// values — they read "inai_partner_pref" first, which would otherwise be stale for 30 min.
+async function refreshPartnerPrefCache(): Promise<void> {
+  try {
+    const prefs = await getPartnerPreferences();
+    sessionStorage.setItem("inai_partner_pref", JSON.stringify({ data: prefs, expiresAt: Date.now() + 30 * 60 * 1000 }));
+  } catch {
+    sessionStorage.removeItem("inai_partner_pref");
+  }
 }
 
 function isAccountNew(createdAt: string): boolean {
@@ -264,7 +275,7 @@ export default function MyProfilePage() {
         }
 
         const dob = formatDOB(bd.birthYear, bd.birthMonth, bd.birthDay) ?? bp?.dateOfBirth;
-        const marital = bd.maritalStatus ? (MARITAL_TO_BE[bd.maritalStatus] ?? bd.maritalStatus) : bp?.maritalStatus;
+        const marital = bd.maritalStatus ? (MARITAL_TO_BE[bd.maritalStatus] ?? bd.maritalStatus) : (bp?.maritalStatus ?? "unmarried");
         const heightCm = bd.height ? parseCm(bd.height) : bp?.heightCm;
         const weightKg = bd.weight ? parseKg(bd.weight) : bp?.weightKg;
         const hasPhys = bd.physicalChallenge !== undefined ? bd.physicalChallenge === "yes" : (bp?.hasPhysicalChallenge ?? false);
@@ -295,8 +306,10 @@ export default function MyProfilePage() {
         const physBuildBE = BUILD_TO_BE[bd.physBuild];
         if (physBuildBE && diff(physBuildBE, bp?.physicalBuild)) lifestylePayload.physicalBuild = physBuildBE;
       }
-      if (bd?.languages?.length && diff(bd.languages, bp?.languagesSpoken ?? ["Tamil"])) {
-        lifestylePayload.languagesSpoken = bd.languages;
+      // Section shows "Tamil" by default but only drafts languages when changed
+      const langs = bd ? (bd.languages?.length ? bd.languages : (bp?.languagesSpoken?.length ? undefined : ["Tamil"])) : undefined;
+      if (langs && diff(langs, bp?.languagesSpoken)) {
+        lifestylePayload.languagesSpoken = langs;
       }
 
       const lsd = readDraft<{ dietHabit: string; smokingHabit: string; drinkingHabit: string }>(DRAFT_KEYS.lifestyle);
@@ -352,7 +365,7 @@ export default function MyProfilePage() {
 
       // ── Partner prefs ─────────────────────────────────────────────────────
       const ppd = readDraft<Record<string, unknown>>(DRAFT_KEYS.partner);
-      if (ppd) saves.push(savePartnerPreferences(ppd as Parameters<typeof savePartnerPreferences>[0]));
+      if (ppd) saves.push(savePartnerPreferences(convertDisplayToApi(ppd)));
 
       if (saves.length === 0) {
         // Nothing actually changed — just clear drafts and return
@@ -366,6 +379,7 @@ export default function MyProfilePage() {
       // Clear all drafts
       clearAllDrafts();
       setAboutMeDirty(false);
+      if (ppd) await refreshPartnerPrefCache();
 
       // Re-fetch and notify AppHeader to update score
       invalidateMeCache();
@@ -412,7 +426,7 @@ export default function MyProfilePage() {
     if (draftName && draftName.length >= 3 && !/^\d+$/.test(draftName) && sectionDiff(draftName, me?.name))
       saves.push(updateMe({ name: draftName }));
     const dob = formatDOB(bd.birthYear, bd.birthMonth, bd.birthDay) ?? bp?.dateOfBirth;
-    const marital = bd.maritalStatus ? (MARITAL_TO_BE[bd.maritalStatus] ?? bd.maritalStatus) : bp?.maritalStatus;
+    const marital = bd.maritalStatus ? (MARITAL_TO_BE[bd.maritalStatus] ?? bd.maritalStatus) : (bp?.maritalStatus ?? "unmarried");
     const heightCm = bd.height ? parseCm(bd.height) : bp?.heightCm;
     const weightKg = bd.weight ? parseKg(bd.weight) : bp?.weightKg;
     const hasPhys = bd.physicalChallenge !== undefined ? bd.physicalChallenge === "yes" : (bp?.hasPhysicalChallenge ?? false);
@@ -421,7 +435,8 @@ export default function MyProfilePage() {
     if (basicChanged && dob && marital) saves.push(saveBasicDetails({ dateOfBirth: dob, maritalStatus: marital as Parameters<typeof saveBasicDetails>[0]["maritalStatus"], heightCm, weightKg, hasPhysicalChallenge: hasPhys, disabilityType: disType }));
     const lifestylePayload: LifestyleDetailsPayload = {};
     if (bd.physBuild) { const be = BUILD_TO_BE[bd.physBuild]; if (be && sectionDiff(be, bp?.physicalBuild)) lifestylePayload.physicalBuild = be; }
-    if (bd.languages?.length && sectionDiff(bd.languages, bp?.languagesSpoken ?? ["Tamil"])) lifestylePayload.languagesSpoken = bd.languages;
+    const langs = bd.languages?.length ? bd.languages : (bp?.languagesSpoken?.length ? undefined : ["Tamil"]);
+    if (langs && sectionDiff(langs, bp?.languagesSpoken)) lifestylePayload.languagesSpoken = langs;
     if (Object.keys(lifestylePayload).length) saves.push(saveLifestyleDetails(lifestylePayload));
     if (saves.length) await Promise.all(saves);
     sessionStorage.removeItem(DRAFT_KEYS.basic);
@@ -522,11 +537,9 @@ export default function MyProfilePage() {
   async function handleSavePartner() {
     const ppd = readDraft<Record<string, unknown>>(DRAFT_KEYS.partner);
     if (!ppd) return;
-    await savePartnerPreferences(ppd as Parameters<typeof savePartnerPreferences>[0]);
+    await savePartnerPreferences(convertDisplayToApi(ppd));
     sessionStorage.removeItem(DRAFT_KEYS.partner);
-    getPartnerPreferences().then(prefs => {
-      try { sessionStorage.setItem("inai_partner_pref", JSON.stringify({ data: prefs, expiresAt: Date.now() + 30 * 60 * 1000 })); } catch {}
-    }).catch(() => {});
+    await refreshPartnerPrefCache();
     await refreshAfterSave();
   }
 
