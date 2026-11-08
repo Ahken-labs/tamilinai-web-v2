@@ -258,7 +258,8 @@ export default function EliteUpgradeBody() {
                                 </div>
                             ))}
                         </div>
-                        <script dangerouslySetInnerHTML={{ __html: CENTER_PRO_SCRIPT }} />
+                        {/* Script as HTML, not a React <script>: runs on page load, skipped on in-site navigation */}
+                        <div hidden dangerouslySetInnerHTML={{ __html: `<script>${CENTER_PRO_SCRIPT}</script>` }} />
                     </div>
 
                     {/* Desktop flex row — 860px and above */}
@@ -278,7 +279,7 @@ export default function EliteUpgradeBody() {
                 <div className="flex justify-center mt-6 sm:mt-8 md:mt-9 lg:mt-10">
                     <button
                         type="button"
-                        onClick={() => router.push("/matches?welcome=1")}
+                        onClick={() => router.push("/matches")}
                         className="text-[#222] text-[16px] font-semibold hover:text-[#B31B38] transition-colors cursor-pointer"
                     >
                         Skip for now
